@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SamitiBank</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <style type="text/css">
+    .container
+    {
+        padding-top:4%;
+    }
+    .table-bordered
+    {
+        font-size: 18px;
+        border-collapse: collapse; 
+        text-align:center;  
+        border: 2px solid black;
+    }
+    /* .table-bordered tr:nth-child(even)
+    {
+        background-color:  #bde6d3 ;          
+    } */
+    .table-bordered tr
+    {
+        background-color:  #b3c9b3;       
+    }
+    .table-bordered tr:hover
+    {
+        background-color: #84b49e;     
+    }
+    .table-bordered td
+    {
+        border:2px solid black;   
+    }
+    .table-bordered th
+    {
+        background-color: #525e8c;
+        text-align:center;  
+    }
+    .button
+    {
+        color:#C70039;
+        display: inline-block;
+        width:70px;
+        height:20px;
+        box-shadow: 1px 2px 5px #000000;
+    }
+    .container12
+    {
+        position:fixed;
+        bottom: 80%;
+        right:5.8%; 
+        cursor: pointer;
+    }
+
+    body
+    {
+        background-color: #ffffff;
+    }
+    /* .container h2
+    {
+        font-size:15px;
+        font-style:italic;
+        font-family:"Lucida Console", "Courier New", monospace;;
+        color:rgb(30, 117, 50);
+        margin-top: 20px;
+    } */
+    h2
+    {
+        font-size:15px;
+        font-style:italic;
+        font-family:"Lucida Console", "Courier New", monospace;;
+        color:rgb(16, 39, 21);
+        margin-top: 20px;
+    }
+    .header 
+    {
+        overflow: hidden;
+        background-color: #f1f1f1;
+        padding: 20px 10px;
+        text-align: center;
+    }
+    h1
+    {
+        text-align: center;
+        font-size:20px;
+        letter-spacing:5px;
+        font-family:"Times New Roman", Times, serif;;
+        color:rgb(99, 4, 4);
+    }
+    .header-right 
+    {
+        float: right;
+        
+    }
+
+    @media screen and (max-width: 500px) 
+    {
+        .header a 
+        {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .header-right 
+        {
+            float: none;
+        }
+    }
+    .navbar 
+    {
+        overflow: hidden;
+        background-color: #9c7474;
+        font-family: Arial;
+    }
+    .navbar a 
+    {
+        float: left;
+        font-size: 16px;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    form.example input[type=date] 
+    {
+        padding: 9px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    form.example input[type=submit]
+    {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+    form.example input[type=submit] :hover 
+    {
+        background: #0b7dda;
+    }
+
+    form.example::after 
+    {
+        content: "";
+        clear: both;
+        display: table; 
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-right"></div>
+        <h1>Young Mitara Mandal</h1>
+    </div>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/historicalData">Historical Data</a>
+        <form class="example" action"" method="post" style="margin:auto;max-width:300px">
+            <input type="date" name="month_Param">
+            <input type="submit" name="action" value="OK">
+        </form>
+    </div>
+    <!-- <div class="container12">
+    <button onclick="window.location='/showgraph'"> ATTENDENCE ANALYSIS</button>
+    </div> -->
+    <div class="container">
+        <h2>Balance Sheet</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Month</th>
+                <th>Total Collected</th>
+                <th>Total Loan</th>
+                <th>Month Opening Balance</th>
+                <th>Month Closing Balance</th>
+                <th>Cashier Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+                <td>{{i[4]}}</td>
+                <td>{{i[5]}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

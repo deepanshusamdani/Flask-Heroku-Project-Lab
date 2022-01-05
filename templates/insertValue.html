@@ -1,0 +1,68 @@
+<html>
+    <head>      
+      <link rel="stylesheet" href="/static/style.css">
+      <link href="https://fonts.googleapis.com/css?family=Amarante" rel="stylesheet"> 	
+      <title>Samiti-Mandal</title>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    </head>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 16px;
+      }
+      input[type=submit] 
+      {
+        width: 20%;
+        padding: 5px;                
+        border-radius: 2px;
+        background-color: #04AA6D;
+        color: white;
+        cursor: pointer;
+      }       
+      </style>
+    <body>
+        <div class="header">
+            <div class="header-right">
+                <!-- <a class="active" href="#home">Home</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a> -->
+            </div>
+            <h1>Young-Mitara-Mandal</h1>
+        </div>
+
+      <div class="navbar">
+        <a href="/">Add More Entry</a>
+        <a href="/">Exit</a>
+        <a href="/updaterecent">Update Record</a>
+        <a href="/historicalData">Historical Data</a>
+        <a href="/bank">Bank Status</a>
+      </div><br>
+      <div class = textValue>
+        <h2><b>Your record has been added successfully!<b></h2><br>
+      </div>
+      <table>
+        <tr class="table__header">
+          {% for i in data_headings %}
+          <th class="table__cell">{{i}}</th>
+          {% endfor %}
+        </tr>
+        {% for row in df_name_mcb %}
+        <tr class="table__row">
+          {% for cell in row %}
+          <td class="table__cell">{{cell}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+      
+    </body>
+</html>
+
