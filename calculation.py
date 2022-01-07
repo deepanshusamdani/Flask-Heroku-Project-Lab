@@ -19,7 +19,7 @@ def accessuser():
         conn = connectdb()
         cursor = conn.cursor()
         if conn is not None:
-            cursor.execute("SELECT * FROM user")
+            cursor.execute("SELECT * FROM userobj;")
             Userdata = cursor.fetchall()
             print(Userdata)
             print("type: ",type(Userdata))
