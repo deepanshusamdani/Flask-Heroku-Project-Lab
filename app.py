@@ -77,7 +77,7 @@ def historicalData():
                                 new_loan_amount,
                                 total_outstanding_debt
                                 FROM   
-                                    monthlycontractbalance join user on user.userid =  monthlycontractbalance.user_id
+                                    monthlycontractbalance join userobj on userobj.userid =  monthlycontractbalance.user_id
                                 ORDER  BY user_id, mcb_datemonth
                                 """)
         historical_data = cursor.fetchall()
@@ -97,7 +97,7 @@ def historicalData():
                 fetching user id for specfic user to search or see the
                 historical data
             '''
-            cursor.execute(f""" SELECT userid from user where username = '{inuserval}' """)
+            cursor.execute(f""" SELECT userid from userobj where username = '{inuserval}' """)
             _fetchId = cursor.fetchall()[0][0] #to fetch only id used indexing
             print("_fetchId:: ",_fetchId)
             cursor.execute(f"""SELECT 
@@ -113,7 +113,7 @@ def historicalData():
                                 new_loan_amount,
                                 total_outstanding_debt
                                 FROM   
-                                    monthlycontractbalance join user on user.userid =  monthlycontractbalance.user_id
+                                    monthlycontractbalance join userobj on userobj.userid =  monthlycontractbalance.user_id
                                 WHERE monthlycontractbalance.user_id = {_fetchId}
                                 ORDER  BY user_id, mcb_datemonth
                                 """)
@@ -144,7 +144,7 @@ def historicalData():
                                             new_loan_amount,
                                             total_outstanding_debt
                                         FROM   
-                                            monthlycontractbalance join user on user.userid =  monthlycontractbalance.user_id
+                                            monthlycontractbalance join userobj on userobj.userid =  monthlycontractbalance.user_id
                                         WHERE monthlycontractbalance.mcb_datemonth = '{historydateFromSearch}'
                                         ORDER  BY user_id, mcb_datemonth
                                     """
@@ -230,11 +230,11 @@ def updaterecent():
             conn.commit()
             data_update = cursor.fetchall()
             fetchupdatedrecord = (f""" SELECT 
-                                            user.username,monthlycontractbalance.* 
+                                            userobj.username,monthlycontractbalance.* 
                                         FROM 
                                             monthlycontractbalance"
-                                        JOIN user
-                                        ON user.userid = monthlycontractbalance.user_id 
+                                        JOIN userobj
+                                        ON userobj.userid = monthlycontractbalance.user_id 
                                         WHERE 
                                             monthlycontractbalance.user_id = '{_updateuserid}'
                                             AND
