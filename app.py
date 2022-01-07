@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 from calculation import accessuser,valueChecker
 from databaseConnect import connectdb
-import mysql.connector as mysql
+import psycopg2
 import pandas as pd
 
 app = Flask(__name__)
@@ -232,8 +232,8 @@ def updaterecent():
             fetchupdatedrecord = (f""" SELECT 
                                             user.username,monthlycontractbalance.* 
                                         FROM 
-                                            monthlycontractbalance 
-                                        JOIN user 
+                                            monthlycontractbalance"
+                                        JOIN user
                                         ON user.userid = monthlycontractbalance.user_id 
                                         WHERE 
                                             monthlycontractbalance.user_id = '{_updateuserid}'
@@ -342,4 +342,4 @@ def deleterecord():
         print("pagfe not found, 404 error!")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
