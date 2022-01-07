@@ -4,7 +4,7 @@ from numpy.lib.shape_base import column_stack
 from datetime import datetime
 from databaseConnect import connectdb
 from decimal import *
-import mysql.connector as mysql
+import psycopg2
 import numpy as np
 import pandas as pd
 
@@ -66,9 +66,9 @@ def insertMonthlyValues(readParam):
                             AND 
                             mcb_datemonth = (
                                             SELECT Max(mcb_datemonth) 
-                                            FROM monthlycontractbalance
+                                            FROM "monthlycontractbalance"
                                             where user_id = {_userId}
-                                            ) 
+                                            )
                         """
             cursor.execute(mcb_qry)
             # df.loc[df['A'] == 'foo']   --> complete row value
@@ -163,7 +163,7 @@ def insertMonthlyValues(readParam):
                 qry_exactPreviousMonthDate = f"""
                                                 SELECT 
                                                     distinct(last_day('{_monthDate}' - interval 2 month) + interval 1 day)
-                                                FROM monthlycontractbalance;
+                                                FROM "monthlycontractbalance";
                                             """
                 '''
                     carry_balance: previous month amount which remain left after giving loan
