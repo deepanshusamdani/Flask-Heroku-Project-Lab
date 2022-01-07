@@ -18,7 +18,7 @@ def accessuser():
     try:
         conn = connectdb()
         cursor = conn.cursor()
-        if conn.is_connected():
+        if conn is not None:
             cursor.execute("SELECT * FROM user")
             Userdata = cursor.fetchall()
             print(Userdata)
@@ -47,7 +47,7 @@ def insertMonthlyValues(readParam):
         _interestRate =  cursor.fetchall()[0][0] #fetching interestrate value
         _interestRate = _interestRate * (0.01)
 
-        if conn.is_connected():
+        if conn is not None:
             mcb_qry= f"""
                         SELECT 
                             user_id,
