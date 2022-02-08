@@ -46,7 +46,7 @@ def insertMonthlyValues(readParam):
         cursor.execute(f"SELECT interestrate from interest where datemonth ='{_monthDate}'")
         _interestRate =  cursor.fetchall()[0][0] #fetching interestrate value
         print("_interestRate_1: ",_interestRate)
-        _interestRate = int(_interestRate) * (0.01)
+        _interestRate = float(_interestRate) * (0.01)
         print("_interestRate_2: ",_interestRate)
         
         if conn is not None:
@@ -74,8 +74,11 @@ def insertMonthlyValues(readParam):
                         """
             cursor.execute(mcb_qry)
             # df.loc[df['A'] == 'foo']   --> complete row value
-            df_mcbData = pd.DataFrame(cursor.fetchall(), columns=cursor.column_names)
-            
+            df_mcbData = pd.DataFrame(cursor.fetchall(), columns=('user_id','mcb_datemonth','outstanding_debt',
+                                                            'share_amount','loan_installment','interest_amount',
+                                                            'cash_collected','debit_balance','new_loan_amount',
+                                                            'total_outstanding_debt'))
+            print("df_mcbData: ",df_mcbData)
             if [i for i in df_mcbData['user_id'] if i == _userId]: 
                 _uId = _userId
                 _MonthDate = _monthDate
