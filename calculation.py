@@ -168,7 +168,7 @@ def insertMonthlyValues(readParam):
                 qry_exactPreviousMonthDate = f"""
                                                 SELECT 
                                                     distinct(last_day('{_monthDate}' - interval 2 month) + interval 1 day)
-                                                FROM "monthlycontractbalance";
+                                                FROM monthlycontractbalance;
                                             """
                 '''
                     carry_balance: previous month amount which remain left after giving loan
