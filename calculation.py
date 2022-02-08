@@ -295,6 +295,7 @@ def insertMonthlyValues(readParam):
 
 def valueChecker(checkParam):
     try:
+        print("inside valueChecker")
         conn = connectdb()
         cursor = conn.cursor()
         check_userID = checkParam[0]
@@ -321,6 +322,7 @@ def valueChecker(checkParam):
                 return
             else:
                 #to insert values in table
+                print("to insert values in table")
                 insertedValue = insertMonthlyValues(checkParam)
             return insertedValue
         else:
