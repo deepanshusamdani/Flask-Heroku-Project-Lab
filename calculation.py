@@ -45,8 +45,10 @@ def insertMonthlyValues(readParam):
         _cashierAmt = readParam[4]  #once in year have value 1000RS, (Jan) of every year
         cursor.execute(f"SELECT interestrate from interest where datemonth ='{_monthDate}'")
         _interestRate =  cursor.fetchall()[0][0] #fetching interestrate value
+        print("_interestRate_1: ",_interestRate)
         _interestRate = int(_interestRate) * (0.01)
-
+        print("_interestRate_2: ",_interestRate)
+        
         if conn is not None:
             mcb_qry= f"""
                         SELECT 
