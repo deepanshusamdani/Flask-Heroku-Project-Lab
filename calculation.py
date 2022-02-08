@@ -3,7 +3,7 @@ from numpy.lib.function_base import select
 from numpy.lib.shape_base import column_stack
 from datetime import datetime
 from databaseConnect import connectdb
-from decimal import *
+from decimal import Decimal
 import psycopg2
 import numpy as np
 import pandas as pd
